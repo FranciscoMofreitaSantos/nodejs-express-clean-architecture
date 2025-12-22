@@ -1,0 +1,33 @@
+{
+  "name": "nodejs-express-clean-architecture",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FranciscoMofreitaSantos/nodejs-express-clean-architecture.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/FranciscoMofreitaSantos/nodejs-express-clean-architecture/issues"
+  },
+  "homepage": "https://github.com/FranciscoMofreitaSantos/nodejs-express-clean-architecture#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.0.2",
+    "typedi": "^0.10.0",
+    "winston": "^3.19.0"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "^25.0.3"
+  }
+}
