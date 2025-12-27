@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ### Update a Student (PUT)
 # Replace {id} with the domainId (UUID) generated during creation
-@studentId = 1ae4cf4c-3e6d-4f2e-9b8f-a8d3091a0895
+@studentId = c860c72a-c50a-4291-82bc-dabe7e381af4
 
 PUT {{baseUrl}}/student/{{studentId}}
 Content-Type: application/json
