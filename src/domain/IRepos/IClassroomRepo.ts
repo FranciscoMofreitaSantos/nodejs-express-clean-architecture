@@ -12,6 +12,8 @@ export interface IClassroomRepo extends Repo<Classroom> {
 
     findByTeacherEmail(email: Email | string): Promise<Classroom[]>;
 
+    findTeacherByEmail(email: Email | string): Promise<Teacher | null>;
+
     findByName(name: string): Promise<Classroom | null>;
 
     findAll(): Promise<Classroom[]>;

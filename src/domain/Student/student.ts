@@ -36,6 +36,10 @@ export class Student extends AggregateRoot<StudentProps> {
         this.props.classroomId = classroomId;
     }
 
+    public removeFromClassroom (): void {
+        this.props.classroomId = null;
+    }
+
     public changeName (name: string): void {
         if (name && name.length > 0) {
             this.props.name = name;
