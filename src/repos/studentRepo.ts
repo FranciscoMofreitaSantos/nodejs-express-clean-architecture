@@ -1,9 +1,11 @@
 import { Service, Inject } from 'typedi';
 import { Model, Document } from 'mongoose';
-import { IStudentRepo } from "../domain/IRepos/studentRepo";
+import { IStudentRepo } from "../domain/IRepos/IStudentRepo";
 import { Student } from "../domain/Student/student";
 import StudentMapper from "../mappers/studentMapper";
 import {IStudentPersistence} from "../schemas/studentSchema";
+import {query} from "winston";
+import {StudentId} from "../domain/Student/studentId";
 
 @Service()
 export default class StudentRepo implements IStudentRepo {
@@ -59,4 +61,20 @@ export default class StudentRepo implements IStudentRepo {
         const res = await this.studentModel.findOne({ domainId: id });
         return !!res ? this.studentMapper.toDomain(res) : null;
     }
+
+    public async findByIds(ids: StudentId[] | string[]): Promise<Student[]> {
+        const idStrings = ids.map(id => id.toString());
+
+        const students = await this.studentModel.find({
+            domainId: {
+                $in: idStrings
+            }
+        });
+
+        return students
+            .map(s => this.studentMapper.toDomain(s))
+            .filter(s => s !== null) as Student[];
+    }
+
+
 }

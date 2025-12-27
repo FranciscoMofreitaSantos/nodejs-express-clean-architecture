@@ -2,7 +2,7 @@ import {Service, Inject} from 'typedi';
 import {IStudentDTO} from "../dto/studentDTO";
 import {Result} from "../core/logic/Result";
 import {Email} from "../domain/Shared/email";
-import {IStudentRepo} from "../domain/IRepos/studentRepo";
+import {IStudentRepo} from "../domain/IRepos/IStudentRepo";
 import {Student} from "../domain/Student/student";
 import StudentMapper from "../mappers/studentMapper";
 import IStudentService from "./IServices/IStudentService";
