@@ -119,4 +119,26 @@ export default class ClassroomRepo implements IClassroomRepo {
         return !!res ? this.classroomMapper.toDomain(res) : null;
     }
 
+
+    public async findTeacherByEmail(email: Email | string): Promise<Teacher | null> {
+        const emailStr = email instanceof Email ? email.value : email;
+
+        const classroomRecord = await this.classroomModel.findOne({
+            "teacher.email": emailStr.toLowerCase()
+        });
+
+        if (!classroomRecord) {
+            return null;
+        }
+
+        const teacherOrError = Teacher.create({
+            name: classroomRecord.teacher.name,
+            email: Email.create(classroomRecord.teacher.email).getValue()
+        });
+
+        return teacherOrError.isSuccess ? teacherOrError.getValue() : null;
+    }
+
+
+
 }
