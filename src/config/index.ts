@@ -5,7 +5,7 @@ const env = process.env.NODE_ENV || "development";
 
 const envPath = path.resolve(process.cwd(), `.env.${env}`);
 
-const result = dotenv.config({ path: envPath });
+const result = dotenv.config({path: envPath});
 
 if (result.error) {
     console.warn(`⚠️  Could not load ${envPath}. Falling back to .env`);
@@ -41,14 +41,55 @@ export default {
     anotherApiYouMightHaveURL: process.env.ANOTHER_API_URL || "",
 
     controllers: {
-
+        student: {
+            create: {
+                name: "CreateStudentController",
+                path: "../controllers/Student/createStudentController"
+            },
+            update: {
+                name: "UpdateStudentController",
+                path: "../controllers/Student/updateStudentController"
+            },
+            delete: {
+                name: "DeleteStudentController",
+                path: "../controllers/Student/deleteStudentController"
+            },
+            getAll: {
+                name: "GetAllStudentsController",
+                path: "../controllers/Student/getAllStudentsController"
+            },
+            getByEmail: {
+                name: "GetStudentByEmailController",
+                path: "../controllers/Student/getStudentByEmailController"
+            }
+        }
     },
 
     repos: {
-
+        student: {
+            name: "studentRepo",
+            path: "../repos/studentRepo"
+        },
     },
 
     services: {
+        student: {
+            name: "StudentService",
+            path: "../services/studentService"
+        },
+    },
 
+    schemas: {
+        student: {
+            name: "studentSchema",
+            path: "../persistence/schemas/studentSchema"
+        },
+    },
+
+    mappers: {
+        student: {
+            name: "studentMapper",
+            path: "../mappers/studentMapper"
+        },
     }
 };

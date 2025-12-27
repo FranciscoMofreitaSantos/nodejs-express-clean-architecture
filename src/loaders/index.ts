@@ -12,24 +12,27 @@ export default async ({expressApp}: { expressApp: express.Application }) => {
 
     dependencyInjectorLoader({
         schemas: [
-
+            config.schemas.student,
         ],
 
         mappers: [
-
+            config.mappers.student,
         ],
 
         controllers: [
-
-
-
-
+            config.controllers.student.create,
+            config.controllers.student.update,
+            config.controllers.student.delete,
+            config.controllers.student.getAll,
+            config.controllers.student.getByEmail,
         ],
+
         repos: [
-
+            config.repos.student
         ],
-        services: [
 
+        services: [
+            config.services.student
         ]
     });
 
