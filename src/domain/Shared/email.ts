@@ -17,7 +17,7 @@ export class Email extends ValueObject<EmailProps> {
     }
 
     private static isValidEmail(email: string): boolean {
-        const re = /^[^\s@]+@nodeDDD\.[^\s@.]+$/;
+        const re = /^[^\s@]+@nodeddd\.[^\s@.]+$/;
         return re.test(email);
     }
 
@@ -29,7 +29,7 @@ export class Email extends ValueObject<EmailProps> {
         }
 
         if (!this.isValidEmail(email)) {
-            return Result.fail<Email>(`The email "${email}" is invalid. All emails should belong to domain @nodeDDD`);
+            return Result.fail<Email>(`The email "${email}" is invalid. All emails should belong to domain @nodeddd`);
         }
 
         return Result.ok<Email>(new Email({ value: email.toLowerCase() }));
