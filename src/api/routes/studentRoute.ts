@@ -27,8 +27,7 @@ export default (app: Router) => {
         celebrate({
             body: Joi.object({
                 name: Joi.string().required(),
-                email: Joi.string().required(),
-                classroomId: Joi.string().optional(),
+                email: Joi.string().required()
             })
         }),
         (req, res) => createCtrl.execute(req, res)
@@ -41,7 +40,6 @@ export default (app: Router) => {
             body: Joi.object({
                 name: Joi.string().required(),
                 email: Joi.string().required(),
-                classroomId: Joi.string().optional(),
             })
         }),
         (req, res) => updateCtrl.execute(req, res)
