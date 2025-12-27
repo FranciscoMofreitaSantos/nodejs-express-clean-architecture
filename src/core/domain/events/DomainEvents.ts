@@ -32,7 +32,6 @@ export class DomainEvents {
     }
 
     private static findMarkedAggregateByID (id: UniqueEntityID): AggregateRoot<any> {
-        // @ts-ignore
         let found: AggregateRoot<any> = null;
         for (let aggregate of this.markedAggregates) {
             if (aggregate.id.equals(id)) {
@@ -55,10 +54,9 @@ export class DomainEvents {
 
     public static register(callback: (event: IDomainEvent) => void, eventClassName: string): void {
         if (!this.handlersMap.hasOwnProperty(eventClassName)) {
-            // @ts-ignore
             this.handlersMap[eventClassName] = [];
         }
-        // @ts-ignore
+
         this.handlersMap[eventClassName].push(callback);
     }
 
@@ -74,7 +72,6 @@ export class DomainEvents {
         const eventClassName: string = event.constructor.name;
 
         if (this.handlersMap.hasOwnProperty(eventClassName)) {
-            // @ts-ignore
             const handlers: any[] = this.handlersMap[eventClassName];
             for (let handler of handlers) {
                 handler(event);
