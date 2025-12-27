@@ -1,0 +1,25 @@
+import {Service, Inject} from 'typedi';
+import {BaseController} from "../../core/infra/BaseController";
+import {IStudentDTO} from "../../dto/studentDTO";
+import IStudentService from "../../services/IServices/IStudentService";
+
+@Service()
+export default class CreateStudentController extends BaseController {
+    constructor(
+        @Inject('StudentService')
+        private studentService: IStudentService) {
+        super();
+    }
+
+    protected async executeImpl(): Promise<any> {
+        const dto = this.req.body as IStudentDTO;
+
+        const result = await this.studentService.createStudent(dto);
+
+        if (result.isFailure) {
+            return this.clientError(result.errorValue().toString());
+        }
+
+        return this.ok(this.res, result.getValue());
+    }
+}
