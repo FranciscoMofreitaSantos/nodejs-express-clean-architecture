@@ -1,10 +1,9 @@
-// src/repos/studentRepo.ts
 import { Service, Inject } from 'typedi';
 import { Model, Document } from 'mongoose';
-import { IStudentPersistence } from "../persistence/schemas/studentSchema";
 import { IStudentRepo } from "../domain/IRepos/studentRepo";
 import { Student } from "../domain/Student/student";
 import StudentMapper from "../mappers/studentMapper";
+import {IStudentPersistence} from "../schemas/studentSchema";
 
 @Service()
 export default class StudentRepo implements IStudentRepo {

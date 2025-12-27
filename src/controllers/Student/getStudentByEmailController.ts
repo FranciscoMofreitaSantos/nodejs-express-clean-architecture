@@ -5,7 +5,7 @@ import IStudentService from "../../services/IServices/IStudentService";
 @Service()
 export default class GetStudentByEmailController extends BaseController {
     constructor(
-        @Inject('StudentService')
+        @Inject('studentService')
         private studentService: IStudentService) {
         super();
     }

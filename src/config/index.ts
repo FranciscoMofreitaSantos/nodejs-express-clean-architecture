@@ -74,7 +74,7 @@ export default {
 
     services: {
         student: {
-            name: "StudentService",
+            name: "studentService",
             path: "../services/studentService"
         },
     },

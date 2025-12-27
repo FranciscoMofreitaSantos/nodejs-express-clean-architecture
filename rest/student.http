@@ -1,0 +1,42 @@
+@baseUrl = http://localhost:3001/api
+
+### Create a new Student (POST)
+POST {{baseUrl}}/student
+Content-Type: application/json
+
+{
+  "name": "Francisco Mofreita",
+  "email": "francisco@nodeDDD.com",
+  "classroomId": "8f8e7d2a-1234-4abc-90ff-e1234567890a"
+}
+
+### Create another Student (Without Classroom)
+POST {{baseUrl}}/student
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@nodeDDD.com"
+}
+
+### Update a Student (PUT)
+# Replace {id} with the domainId (UUID) generated during creation
+@studentId = 1ae4cf4c-3e6d-4f2e-9b8f-a8d3091a0895
+
+PUT {{baseUrl}}/student/{{studentId}}
+Content-Type: application/json
+
+{
+  "name": "Francisco Santos Updated",
+  "email": "francisco.new@nodeDDD.com",
+  "classroomId": "8f8e7d2a-1234-4abc-90ff-e1234567890a"
+}
+
+### List all Students (GET)
+GET {{baseUrl}}/student
+
+### Search Student by Email (GET)
+GET {{baseUrl}}/student/search/email/francisco@nodeDDD.com
+
+### Delete a Student (DELETE)
+DELETE {{baseUrl}}/student/{{studentId}}

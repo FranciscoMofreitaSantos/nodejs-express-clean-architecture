@@ -1,12 +1,12 @@
 import {Mapper} from "../core/infra/Mapper";
 import {Classroom} from "../domain/ClassRoom/classroom";
 import {IClassroomDTO} from "../dto/classroomDTO";
-import {IClassroomPersistence} from "../persistence/schemas/classroomSchema";
 import {ClassroomStudentList} from "../domain/ClassRoom/classroomStudentList";
 import {StudentId} from "../domain/Student/studentId";
 import {Teacher} from "../domain/ClassRoom/teacher";
 import {Email} from "../domain/Shared/email";
 import {UniqueEntityID} from "../core/domain/UniqueEntityID";
+import {IClassroomPersistence} from "../schemas/classroomSchema";
 
 export default class ClassroomMapper extends Mapper<Classroom, IClassroomDTO, IClassroomPersistence> {
 

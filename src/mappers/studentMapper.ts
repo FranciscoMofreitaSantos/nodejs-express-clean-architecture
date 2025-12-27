@@ -1,10 +1,10 @@
 import {Mapper} from "../core/infra/Mapper";
 import {Student} from "../domain/Student/student";
 import {IStudentDTO} from "../dto/studentDTO";
-import {IStudentPersistence} from "../persistence/schemas/studentSchema";
 import {Email} from "../domain/Shared/email";
 import {ClassroomId} from "../domain/ClassRoom/classroomId";
 import {UniqueEntityID} from "../core/domain/UniqueEntityID";
+import {IStudentPersistence} from "../schemas/studentSchema";
 
 export default class StudentMapper extends Mapper<Student, IStudentDTO, IStudentPersistence> {
 
