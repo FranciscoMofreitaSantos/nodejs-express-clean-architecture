@@ -1,12 +1,13 @@
 import {Mapper} from "../core/infra/Mapper";
 import {Classroom} from "../domain/ClassRoom/classroom";
-import {IClassroomDTO} from "../dto/classroomDTO";
+import {IClassroomDTO, IClassroomReadModelDTO} from "../dto/classroomDTO";
 import {ClassroomStudentList} from "../domain/ClassRoom/classroomStudentList";
 import {StudentId} from "../domain/Student/studentId";
 import {Teacher} from "../domain/ClassRoom/teacher";
 import {Email} from "../domain/Shared/email";
 import {UniqueEntityID} from "../core/domain/UniqueEntityID";
 import {IClassroomPersistence} from "../schemas/classroomSchema";
+import {IStudentDTO} from "../dto/studentDTO";
 
 export default class ClassroomMapper extends Mapper<Classroom, IClassroomDTO, IClassroomPersistence> {
 
@@ -40,6 +41,23 @@ export default class ClassroomMapper extends Mapper<Classroom, IClassroomDTO, IC
                 email: domain.teacher.email.value
             },
             students: domain.students.getItems().map(id => id.toString())
+        };
+    }
+
+    public static toReadModelDTO(classroom: Classroom, studentsData: IStudentDTO[]): IClassroomReadModelDTO {
+        return {
+            id: classroom.id.toString(),
+            name: classroom.name,
+            teacher: {
+                name: classroom.teacher.name,
+                email: classroom.teacher.email.value
+            },
+
+            students: studentsData.map(s => ({
+                id: s.id,
+                name: s.name,
+                email: s.email
+            }))
         };
     }
 
