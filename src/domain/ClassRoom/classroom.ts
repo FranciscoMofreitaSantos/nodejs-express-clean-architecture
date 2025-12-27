@@ -1,10 +1,12 @@
-import { AggregateRoot } from "../../core/domain/AggregateRoot";
-import { UniqueEntityID } from "../../core/domain/UniqueEntityID";
-import { Result } from "../../core/logic/Result";
-import { Guard } from "../../core/logic/Guard";
 import { ClassroomStudentList } from "./classroomStudentList";
 import { ClassroomId } from "./classroomId";
 import { Teacher } from "./teacher";
+import {AggregateRoot} from "../../core/domain/AggregateRoot";
+import {StudentId} from "../Student/studentId";
+import {UniqueEntityID} from "../../core/domain/UniqueEntityID";
+import {Result} from "../../core/logic/Result";
+import {Guard} from "../../core/logic/Guard";
+
 
 interface ClassroomProps {
     name: string;
@@ -24,6 +26,14 @@ export class Classroom extends AggregateRoot<ClassroomProps> {
 
     private constructor(props: ClassroomProps, id?: UniqueEntityID) {
         super(props, id);
+    }
+
+    public addStudent (studentId: StudentId): void {
+        this.props.students.add(studentId);
+    }
+
+    public removeStudent (studentId: StudentId): void {
+        this.props.students.remove(studentId);
     }
 
     public static create(props: ClassroomProps, id?: UniqueEntityID): Result<Classroom> {
