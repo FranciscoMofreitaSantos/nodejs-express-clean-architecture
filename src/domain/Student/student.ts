@@ -36,6 +36,16 @@ export class Student extends AggregateRoot<StudentProps> {
         this.props.classroomId = classroomId;
     }
 
+    public changeName (name: string): void {
+        if (name && name.length > 0) {
+            this.props.name = name;
+        }
+    }
+
+    public changeEmail(email : Email) {
+        this.props.email = email;
+    }
+
     private constructor(props: StudentProps, id?: UniqueEntityID) {
         super(props, id);
     }
