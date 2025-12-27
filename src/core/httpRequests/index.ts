@@ -1,9 +1,8 @@
 import config from "../../config";
 import { HttpClient } from "./HttpClient";
 
-if (!config.webApiUrl || !config.planningApiUrl) {
+if (!config.anotherApiYouMightHaveURL) {
     throw new Error("❌ Missing upstream API URLs");
 }
 
-export const webApiClient = new HttpClient(config.webApiUrl);
-export const planningClient = new HttpClient(config.planningApiUrl);
+export const anotherApi = new HttpClient(config.anotherApiYouMightHaveURL);
